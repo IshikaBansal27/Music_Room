@@ -1,0 +1,27 @@
+- generic [ref=f38e3]:
+  - banner [ref=f38e4]:
+    - heading "Music Room" [level=1] [ref=f38e13]
+    - button "debugtester1" [ref=f38e15] [cursor=pointer]
+  - main [ref=f38e23]:
+    - generic [ref=f38e24]:
+      - generic [ref=f38e25]:
+        - generic [ref=f38e26]:
+          - paragraph [ref=f38e31]: Start your Jam
+          - heading "Create your unique Music Room" [level=2] [ref=f38e32]: Create your uniqueMusic Room
+          - paragraph [ref=f38e33]: Give your room a unique name and control the queue.
+        - generic [ref=f38e34]:
+          - generic [ref=f38e35]:
+            - generic [ref=f38e36]: Room name
+            - textbox "My Vibez Room" [ref=f38e37]
+          - button "Create Room" [ref=f38e38] [cursor=pointer]
+      - generic [ref=f38e39]:
+        - generic [ref=f38e40]:
+          - paragraph [ref=f38e46]: Join a Room
+          - heading "Join an existing Room" [level=2] [ref=f38e47]
+          - paragraph [ref=f38e48]: Enter a 6-character code to jump in and listen together.
+        - generic [ref=f38e49]:
+          - generic [ref=f38e50]:
+            - generic [ref=f38e51]: Room code
+            - textbox "X K 9 F 2 A" [ref=f38e52]: ZZZZZZ
+          - paragraph [ref=f38e54]: Room not found or inactive
+          - button "Join Room" [active] [ref=f38e53] [cursor=pointer]

@@ -1,0 +1,87 @@
+- generic [ref=f6e4]:
+  - banner [ref=f6e5]:
+    - generic [ref=f6e11]:
+      - heading "Sync Test Room" [level=1] [ref=f6e12]
+      - generic [ref=f6e13]:
+        - generic [ref=f6e14]: Code
+        - generic [ref=f6e16]: 14FBA9
+        - button "Copy Room Code" [ref=f6e17] [cursor=pointer]
+    - generic [ref=f6e23]:
+      - textbox "Search for a song to add in queue..." [ref=f6e24]
+      - button "Search" [ref=f6e25] [cursor=pointer]
+    - generic [ref=f6e26]:
+      - button "2" [ref=f6e28] [cursor=pointer]
+      - generic [ref=f6e32]:
+        - button "debugtester2" [active] [ref=f6e33] [cursor=pointer]
+        - generic [ref=f6e88]:
+          - button "Light Mode" [ref=f6e89] [cursor=pointer]
+          - button "Leave Room" [ref=f6e93] [cursor=pointer]
+  - main [ref=f6e41]:
+    - generic [ref=f6e42]:
+      - generic [ref=f6e43]:
+        - iframe [ref=f6e46]:
+          - generic [ref=f7e1]:
+            - generic "YouTube Video Player" [ref=f7e3]
+            - generic [ref=f7e6]:
+              - generic:
+                - generic:
+                  - button "Hide player controls" [ref=f7e7] [cursor=pointer]
+                  - generic [ref=f7e9]:
+                    - generic [ref=f7e12]:
+                      - generic [ref=f7e16]:
+                        - generic [ref=f7e17]:
+                          - link "Big Buck Bunny [HD] - FULL MOVIE Short film (2008)" [ref=f7e18] [cursor=pointer]:
+                            - /url: https://www.youtube.com/watch?v=JaTVwLQiEio
+                          - link "anil kumar" [ref=f7e19] [cursor=pointer]:
+                            - /url: /channel/UC_gMEXHtk_gTe8Dxk6insig
+                        - generic [ref=f7e21]:
+                          - button [ref=f7e22] [cursor=pointer]:
+                            - img "thumbnail-image" [ref=f7e23]
+                          - generic [ref=f7e25]:
+                            - generic: anil kumar
+                            - generic: 2 subscribers
+                      - generic [ref=f7e26]:
+                        - button "Mute" [ref=f7e28] [cursor=pointer]:
+                          - img "Mute" [ref=f7e29]
+                        - button "No captions are available for this video" [disabled] [ref=f7e34] [cursor=pointer]
+                        - button "Playback Settings" [ref=f7e39] [cursor=pointer]
+                    - generic [ref=f7e44]:
+                      - button "Rewind 10 seconds" [ref=f7e45] [cursor=pointer]
+                      - button "Pause video" [ref=f7e47] [cursor=pointer]
+                      - button "Fast forward 10 seconds" [ref=f7e51] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic [ref=f7e55]:
+                          - generic [ref=f7e56]:
+                            - text: 1:29
+                            - generic [ref=f7e57]: Time elapsed 1 minute, 29 seconds
+                          - text: /
+                          - generic [ref=f7e58]:
+                            - text: 9:57
+                            - generic [ref=f7e59]: Time duration 9 minutes, 57 seconds
+                        - button "Enter full screen" [ref=f7e63] [cursor=pointer]
+                    - slider "Seek slider" [ref=f7e69] [cursor=pointer]
+                    - generic [ref=f7e77]:
+                      - button "Copy link" [ref=f7e81] [cursor=pointer]
+                      - link "Watch on YouTube" [ref=f7e92] [cursor=pointer]:
+                        - /url: https://www.youtube.com/watch?v=JaTVwLQiEio
+        - generic [ref=f6e47]:
+          - generic [ref=f6e48]:
+            - heading "Big Buck Bunny [HD] - FULL MOVIE Short film (2008)" [level=3] [ref=f6e49]
+            - paragraph [ref=f6e50]: Now Playing
+          - generic [ref=f6e51]: Host controls playback
+      - generic [ref=f6e57]:
+        - heading "Queue (0)" [level=3] [ref=f6e59]:
+          - text: Queue
+          - generic [ref=f6e62]: (0)
+        - paragraph [ref=f6e67]: Queue is emptySearch and add a song!
+    - generic [ref=f6e69]:
+      - heading "Room Chat" [level=3] [ref=f6e71]
+      - generic [ref=f6e75]:
+        - generic [ref=f6e77]:
+          - paragraph [ref=f6e80]: No messages yet
+          - paragraph [ref=f6e81]: Say hi to the room!
+        - generic [ref=f6e82]:
+          - button "🙂" [ref=f6e83] [cursor=pointer]
+          - textbox "Type a message..." [ref=f6e84]
+          - button "Send" [disabled] [ref=f6e85]

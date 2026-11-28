@@ -1,0 +1,13 @@
+- generic [active] [ref=f4e1]:
+  - paragraph [ref=f4e3]: Loading room...
+  - iframe [ref=f4e4]:
+    - generic [ref=f5e2]:
+      - generic [ref=f5e3]: "Uncaught runtime errors:"
+      - button "Dismiss" [ref=f5e4] [cursor=pointer]: ×
+      - generic [ref=f5e5]:
+        - generic [ref=f5e6]:
+          - generic [ref=f5e7]: ERROR
+          - generic [ref=f5e8]: "Request failed with status code 404 AxiosError: Request failed with status code 404 at settle (http://localhost:3000/static/js/bundle.js:31898:12) at XMLHttpRequest.onloadend (http://localhost:3000/static/js/bundle.js:30323:66)"
+        - generic [ref=f5e9]:
+          - generic [ref=f5e10]: ERROR
+          - generic [ref=f5e11]: "Request failed with status code 404 AxiosError: Request failed with status code 404 at settle (http://localhost:3000/static/js/bundle.js:31898:12) at XMLHttpRequest.onloadend (http://localhost:3000/static/js/bundle.js:30323:66)"

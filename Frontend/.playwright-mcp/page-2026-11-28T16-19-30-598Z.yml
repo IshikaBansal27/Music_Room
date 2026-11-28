@@ -1,0 +1,53 @@
+- generic [ref=f38e55]:
+  - banner [ref=f38e56]:
+    - generic [ref=f38e62]:
+      - heading "Sync Test Room" [level=1] [ref=f38e63]
+      - generic [ref=f38e64]:
+        - generic [ref=f38e65]: Code
+        - generic [ref=f38e67]: 14FBA9
+        - button "Copy Room Code" [ref=f38e68] [cursor=pointer]
+    - generic [ref=f38e74]:
+      - textbox "Search for a song to add in queue..." [ref=f38e75]: Big Buck Bunny
+      - button "Search" [ref=f38e76] [cursor=pointer]
+    - generic [ref=f38e77]:
+      - button "1" [ref=f38e79] [cursor=pointer]
+      - button "debugtester1" [ref=f38e84] [cursor=pointer]
+  - main [ref=f38e92]:
+    - generic [ref=f38e93]:
+      - generic [ref=f38e94]:
+        - iframe [ref=f38e97]:
+          - generic [ref=f39e1]:
+            - generic "YouTube Video Player" [ref=f39e3]
+            - generic [ref=f39e5]:
+              - generic:
+                - generic:
+                  - generic [ref=f39e6] [cursor=pointer]
+                  - button "Play video" [ref=f39e10] [cursor=pointer]
+                  - button "Hide player controls" [ref=f39e12] [cursor=pointer]
+        - generic [ref=f38e98]:
+          - generic [ref=f38e99]:
+            - heading "Waiting for next song..." [level=3] [ref=f38e100]
+            - paragraph [ref=f38e101]: Now Playing
+          - generic [ref=f38e102]:
+            - button [ref=f38e103] [cursor=pointer]
+            - button [ref=f38e106] [cursor=pointer]
+            - button [ref=f38e109] [cursor=pointer]
+      - generic [ref=f38e114]:
+        - heading "Queue (1)" [level=3] [ref=f38e219]:
+          - text: Queue
+          - generic [ref=f38e119]: (1)
+        - list [ref=f38e220]:
+          - listitem [ref=f38e221]:
+            - generic [ref=f38e225]:
+              - paragraph [ref=f38e226]: Big Buck Bunny [HD] - FULL MOVIE Short film (2008)
+              - paragraph [ref=f38e227]: added by debugtester1
+    - generic [ref=f38e126]:
+      - heading "Room Chat" [level=3] [ref=f38e128]
+      - generic [ref=f38e132]:
+        - generic [ref=f38e134]:
+          - paragraph [ref=f38e137]: No messages yet
+          - paragraph [ref=f38e138]: Say hi to the room!
+        - generic [ref=f38e139]:
+          - button "🙂" [ref=f38e140] [cursor=pointer]
+          - textbox "Type a message..." [ref=f38e141]
+          - button "Send" [disabled] [ref=f38e142]

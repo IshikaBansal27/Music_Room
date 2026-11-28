@@ -2,6 +2,9 @@ const { Server } = require("socket.io");
 const jwt = require("jsonwebtoken");
 const Room = require("../models/rooms");
 
+const HOST_DISCONNECT_GRACE_MS = 45_000;
+const PRESENCE_RECONNECT_GRACE_MS = 10_000;
+
 const initSocket = (server) => {
   const io = new Server(server, {
     cors: {
@@ -11,6 +14,43 @@ const initSocket = (server) => {
     },
     transports: ["websocket", "polling"], // add this line
   });
+
+  // roomId -> timeout handle for a pending close, so a brief drop (sleep, wifi blip)
+  // doesn't kill the room if the host reconnects within the grace period
+  const pendingRoomClosures = new Map();
+
+  // roomId -> Map(userId -> number of live sockets that user currently has open
+  // in that room), so "user-joined"/"user-left" fire once per real presence
+  // change, not once per socket connection (multiple tabs, reconnects, etc.)
+  const roomPresence = new Map();
+  // "roomId:userId" -> timeout handle for a delayed "user-left" broadcast, so
+  // a brief disconnect (sleep, wifi blip) doesn't spam the room with a
+  // "left" followed by a "joined" a moment later
+  const pendingUserLeaves = new Map();
+
+  const addPresence = (roomId, userId) => {
+    let counts = roomPresence.get(roomId);
+    if (!counts) {
+      counts = new Map();
+      roomPresence.set(roomId, counts);
+    }
+    const next = (counts.get(userId) || 0) + 1;
+    counts.set(userId, next);
+    return next;
+  };
+
+  const removePresence = (roomId, userId) => {
+    const counts = roomPresence.get(roomId);
+    if (!counts || !counts.has(userId)) return 0;
+    const next = counts.get(userId) - 1;
+    if (next <= 0) {
+      counts.delete(userId);
+      if (counts.size === 0) roomPresence.delete(roomId);
+      return 0;
+    }
+    counts.set(userId, next);
+    return next;
+  };
 
   // Middleware — verify JWT before allowing socket connection
   io.use((socket, next) => {
@@ -53,7 +93,26 @@ const initSocket = (server) => {
         }
 
         socket.join(roomId);
+        socket.data.roomId = roomId;
         console.log(`${socket.user.username} joined room ${roomId}`);
+
+        // Host reconnected in time — call off the scheduled closure
+        if (pendingRoomClosures.has(roomId)) {
+          clearTimeout(pendingRoomClosures.get(roomId));
+          pendingRoomClosures.delete(roomId);
+          console.log(`Host reconnected — cancelled pending closure for room ${roomId}`);
+        }
+
+        // If this is a reconnect within the grace window (sleep/wifi blip),
+        // cancel the delayed "left" we scheduled and don't announce a "joined"
+        // either — nothing actually changed from the room's point of view.
+        const presenceKey = `${roomId}:${socket.user.id}`;
+        const pendingLeave = pendingUserLeaves.get(presenceKey);
+        const isReconnectWithinGrace = Boolean(pendingLeave);
+        if (isReconnectWithinGrace) {
+          clearTimeout(pendingLeave);
+          pendingUserLeaves.delete(presenceKey);
+        }
 
         // Send current room state to the late joiner
         // This is how they sync to the correct song + timestamp instantly
@@ -64,10 +123,14 @@ const initSocket = (server) => {
           members: room.members.map((m) => m.username),
         });
 
-        //Notify everyone else in the room
-        socket.to(roomId).emit("user-joined", {
-          username: socket.user.username,
-        });
+        // Only announce a genuinely new presence (first live connection for
+        // this user in this room), not every reconnect or extra tab.
+        const liveCount = addPresence(roomId, socket.user.id);
+        if (liveCount === 1 && !isReconnectWithinGrace) {
+          socket.to(roomId).emit("user-joined", {
+            username: socket.user.username,
+          });
+        }
       } catch (err) {
         socket.emit("error", { message: "Failed to join room" });
       }
@@ -88,6 +151,7 @@ const initSocket = (server) => {
 
         room.currentSong.isPlaying = true;
         room.currentSong.timestamp = timestamp;
+        room.currentSong.lastUpdateAt = Date.now();
         await room.save();
 
         //Broadcast to everyone else in the room
@@ -112,6 +176,7 @@ const initSocket = (server) => {
 
         room.currentSong.isPlaying = false;
         room.currentSong.timestamp = timestamp;
+        room.currentSong.lastUpdateAt = Date.now();
         await room.save();
 
         socket.to(roomId).emit("pause", { timestamp });
@@ -134,6 +199,7 @@ const initSocket = (server) => {
         }
 
         room.currentSong.timestamp = timestamp;
+        room.currentSong.lastUpdateAt = Date.now();
         await room.save();
 
         socket.to(roomId).emit("seek", { timestamp });
@@ -164,6 +230,7 @@ const initSocket = (server) => {
           title: nextSong.title,
           timestamp: 0,
           isPlaying: true,
+          lastUpdateAt: Date.now(),
         };
 
         await room.save();
@@ -208,9 +275,23 @@ const initSocket = (server) => {
     //---Leave Room---
     socket.on("leave-room", ({ roomId }) => {
       socket.leave(roomId);
-      socket.to(roomId).emit("user-left", {
-        username: socket.user.username,
-      });
+      socket.data.roomId = null;
+
+      // Explicit leave is intentional — no grace period, but cancel any
+      // stray pending one and only announce if this was their last tab/connection.
+      const presenceKey = `${roomId}:${socket.user.id}`;
+      const pendingLeave = pendingUserLeaves.get(presenceKey);
+      if (pendingLeave) {
+        clearTimeout(pendingLeave);
+        pendingUserLeaves.delete(presenceKey);
+      }
+
+      const remaining = removePresence(roomId, socket.user.id);
+      if (remaining === 0) {
+        socket.to(roomId).emit("user-left", {
+          username: socket.user.username,
+        });
+      }
       console.log(`${socket.user.username} left room ${roomId}`);
     });
 
@@ -218,22 +299,52 @@ const initSocket = (server) => {
     socket.on("disconnect", async () => {
       console.log(`User disconnected: ${socket.user.username}`);
 
+      // Abrupt disconnect (tab closed, wifi dropped, laptop slept) — don't
+      // announce "left" right away. Wait a bit in case they reconnect; if
+      // they do, join-room cancels this and nothing is ever shown to others.
+      if (socket.data.roomId) {
+        const roomId = socket.data.roomId;
+        const remaining = removePresence(roomId, socket.user.id);
+        if (remaining === 0) {
+          const presenceKey = `${roomId}:${socket.user.id}`;
+          const timeoutId = setTimeout(() => {
+            pendingUserLeaves.delete(presenceKey);
+            io.to(roomId).emit("user-left", { username: socket.user.username });
+          }, PRESENCE_RECONNECT_GRACE_MS);
+          pendingUserLeaves.set(presenceKey, timeoutId);
+        }
+      }
+
       try {
         // Find any active rooms where this user is the host
-        const Room = require("../models/rooms");
         const hostedRooms = await Room.find({
           host: socket.user.id,
           isActive: true,
         });
 
         for (const room of hostedRooms) {
-          room.isActive = false;
-          await room.save();
+          const roomId = room._id.toString();
 
-          // Notify all members in the room
-          io.to(room._id.toString()).emit("room-closed", {
-            message: "Host disconnected. Room has been closed.",
-          });
+          // Don't close immediately — give the host a chance to reconnect
+          // (sleep/wake, brief wifi drop, etc.) before tearing down the room
+          const timeoutId = setTimeout(async () => {
+            pendingRoomClosures.delete(roomId);
+            try {
+              const freshRoom = await Room.findById(roomId);
+              if (!freshRoom || !freshRoom.isActive) return;
+
+              freshRoom.isActive = false;
+              await freshRoom.save();
+
+              io.to(roomId).emit("room-closed", {
+                message: "Host disconnected. Room has been closed.",
+              });
+            } catch (err) {
+              console.error("Delayed room closure error:", err.message);
+            }
+          }, HOST_DISCONNECT_GRACE_MS);
+
+          pendingRoomClosures.set(roomId, timeoutId);
         }
       } catch (err) {
         console.error("Cleanup error:", err.message);

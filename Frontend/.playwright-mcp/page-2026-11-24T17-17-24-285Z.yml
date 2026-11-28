@@ -1,0 +1,96 @@
+- generic [ref=e83]:
+  - banner [ref=e84]:
+    - generic [ref=e90]:
+      - heading "Debug Room" [level=1] [ref=e91]
+      - generic [ref=e92]:
+        - generic [ref=e93]: Code
+        - generic [ref=e95]: 9D3020
+        - button "Copy Room Code" [ref=e96] [cursor=pointer]
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - textbox "Search for a song to add in queue..." [active] [ref=e103]: Levitating
+        - button "Search" [ref=e104] [cursor=pointer]
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - img "Dua Lipa - Levitating Featuring DaBaby (Official Music Video)" [ref=e166]
+          - generic [ref=e167]:
+            - paragraph [ref=e168]: Dua Lipa - Levitating Featuring DaBaby (Official Music Video)
+            - paragraph [ref=e169]: Dua Lipa
+          - button "Add to queue" [ref=e170] [cursor=pointer]
+        - generic [ref=e173]:
+          - img "Dua Lipa - Levitating (Lyrics)" [ref=e175]
+          - generic [ref=e176]:
+            - paragraph [ref=e177]: Dua Lipa - Levitating (Lyrics)
+            - paragraph [ref=e178]: MusiCat
+          - button "Add to queue" [ref=e179] [cursor=pointer]
+        - generic [ref=e182]:
+          - 'img "Levitating by Dua Lipa Lyrics #songlyrics #song #music #levitating" [ref=e184]'
+          - generic [ref=e185]:
+            - paragraph [ref=e186]: "Levitating by Dua Lipa Lyrics #songlyrics #song #music #levitating"
+            - paragraph [ref=e187]: Melodic Muse 🎶
+          - button "Add to queue" [ref=e188] [cursor=pointer]
+        - generic [ref=e191]:
+          - img "Dua Lipa - Levitating (Lyrics video)" [ref=e193]
+          - generic [ref=e194]:
+            - paragraph [ref=e195]: Dua Lipa - Levitating (Lyrics video)
+            - paragraph [ref=e196]: top music
+          - button "Add to queue" [ref=e197] [cursor=pointer]
+        - generic [ref=e200]:
+          - img "Levitating x Woh Ladki Jo - (Dj Ruchir Mashup) | Instagram Trending Reel | Original Mashup | 2023" [ref=e202]
+          - generic [ref=e203]:
+            - paragraph [ref=e204]: Levitating x Woh Ladki Jo - (Dj Ruchir Mashup) | Instagram Trending Reel | Original Mashup | 2023
+            - paragraph [ref=e205]: Dj Ruchir
+          - button "Add to queue" [ref=e206] [cursor=pointer]
+        - generic [ref=e209]:
+          - img "Dua Lipa - Levitating (Lyrics)" [ref=e211]
+          - generic [ref=e212]:
+            - paragraph [ref=e213]: Dua Lipa - Levitating (Lyrics)
+            - paragraph [ref=e214]: Cakes & Eclairs
+          - button "Add to queue" [ref=e215] [cursor=pointer]
+        - generic [ref=e218]:
+          - img "Dua Lipa - Levitating (Live From Mexico)" [ref=e220]
+          - generic [ref=e221]:
+            - paragraph [ref=e222]: Dua Lipa - Levitating (Live From Mexico)
+            - paragraph [ref=e223]: Dua Lipa
+          - button "Add to queue" [ref=e224] [cursor=pointer]
+        - generic [ref=e227]:
+          - img "Dua Lipa - Levitating (Live at Capital&#39;s Jingle Bell Ball 2022) | Capital" [ref=e229]
+          - generic [ref=e230]:
+            - paragraph [ref=e231]: Dua Lipa - Levitating (Live at Capital&#39;s Jingle Bell Ball 2022) | Capital
+            - paragraph [ref=e232]: Capital
+          - button "Add to queue" [ref=e233] [cursor=pointer]
+        - button "Close" [ref=e236] [cursor=pointer]
+    - generic [ref=e105]:
+      - button "2" [ref=e107] [cursor=pointer]
+      - button "debugtester2" [ref=e112] [cursor=pointer]
+  - main [ref=e120]:
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - iframe [ref=e125]:
+          - generic [ref=f1e1]:
+            - generic "YouTube Video Player" [ref=f1e3]
+            - generic [ref=f1e5]:
+              - generic:
+                - generic:
+                  - generic [ref=f1e6] [cursor=pointer]
+                  - button "Play video" [ref=f1e10] [cursor=pointer]
+                  - button "Hide player controls" [ref=f1e14] [cursor=pointer]
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - heading "Waiting for next song..." [level=3] [ref=e128]
+            - paragraph [ref=e129]: Now Playing
+          - generic [ref=e130]: Host controls playback
+      - generic [ref=e136]:
+        - heading "Queue (1)" [level=3] [ref=e138]:
+          - text: Queue
+          - generic [ref=e141]: (1)
+        - list [ref=e143]:
+          - listitem [ref=e144]:
+            - generic [ref=e148]:
+              - paragraph [ref=e149]: The Weeknd - Blinding Lights (Live On The 2020 MTV VMAs)
+              - paragraph [ref=e150]: added by debugtester1
+    - generic [ref=e152]:
+      - heading "Room Chat" [level=3] [ref=e154]
+      - generic [ref=e160]:
+        - textbox "Type a message..." [ref=e161]
+        - button "Send" [ref=e162] [cursor=pointer]

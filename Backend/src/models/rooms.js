@@ -34,7 +34,10 @@ const roomSchema = new mongoose.Schema({
         videoId: {type: String , default: null},
         title: {type:String , default: null},
         timestamp: {type: Number , default: 0},
-        isPlaying: {type: Boolean , default: false}
+        isPlaying: {type: Boolean , default: false},
+        // wall-clock time (ms) when `timestamp` was last recorded — lets late
+        // joiners compute the actual live position instead of a stale one
+        lastUpdateAt: {type: Number , default: () => Date.now()}
     },
     isActive: {
         type: Boolean,

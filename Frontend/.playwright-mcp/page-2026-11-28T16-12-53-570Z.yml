@@ -1,0 +1,45 @@
+- generic [ref=f23e4]:
+  - generic [ref=f23e103]: Queue is empty
+  - banner [ref=f23e5]:
+    - generic [ref=f23e11]:
+      - heading "QA Test Room" [level=1] [ref=f23e12]
+      - generic [ref=f23e13]:
+        - generic [ref=f23e14]: Code
+        - generic [ref=f23e16]: "4371E2"
+        - button "Copy Room Code" [ref=f23e17] [cursor=pointer]
+    - generic [ref=f23e23]:
+      - textbox "Search for a song to add in queue..." [ref=f23e24]
+      - button "Search" [ref=f23e25] [cursor=pointer]
+    - generic [ref=f23e26]:
+      - button "1" [ref=f23e28] [cursor=pointer]
+      - button "debugtester1" [ref=f23e33] [cursor=pointer]
+  - main [ref=f23e41]:
+    - generic [ref=f23e42]:
+      - generic [ref=f23e43]:
+        - iframe [ref=f23e46]:
+          - generic [ref=f24e1]:
+            - generic "YouTube Video Player" [ref=f24e3]
+            - button "Show player controls" [ref=f24e104] [cursor=pointer]
+        - generic [ref=f23e47]:
+          - generic [ref=f23e48]:
+            - heading "lofi hip hop radio 📚 beats to relax/study to" [level=3] [ref=f23e49]
+            - paragraph [ref=f23e50]: Now Playing
+          - generic [ref=f23e51]:
+            - button [ref=f23e52] [cursor=pointer]
+            - button [ref=f23e55] [cursor=pointer]
+            - button [active] [ref=f23e58] [cursor=pointer]
+      - generic [ref=f23e63]:
+        - heading "Queue (0)" [level=3] [ref=f23e98]:
+          - text: Queue
+          - generic [ref=f23e68]: (0)
+        - paragraph [ref=f23e102]: Queue is emptySearch and add a song!
+    - generic [ref=f23e79]:
+      - heading "Room Chat" [level=3] [ref=f23e81]
+      - generic [ref=f23e85]:
+        - generic [ref=f23e87]:
+          - paragraph [ref=f23e90]: No messages yet
+          - paragraph [ref=f23e91]: Say hi to the room!
+        - generic [ref=f23e92]:
+          - button "🙂" [ref=f23e93] [cursor=pointer]
+          - textbox "Type a message..." [ref=f23e94]
+          - button "Send" [disabled] [ref=f23e95]

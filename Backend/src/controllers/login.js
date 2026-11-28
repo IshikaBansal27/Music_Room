@@ -8,10 +8,16 @@ async function registerUser(req , res)
 
         const {username , email , password} = req.body;
 
-        const existingUser = await User.findOne({email});
-        if(existingUser)
+        const existingEmail = await User.findOne({email});
+        if(existingEmail)
         {
             return res.status(400).json({ message: 'Email already in use' });
+        }
+
+        const existingUsername = await User.findOne({username});
+        if(existingUsername)
+        {
+            return res.status(400).json({ message: 'Username already taken' });
         }
 
         const hashedPassword = await bcrypt.hash(password , 10);

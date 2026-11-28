@@ -1,0 +1,36 @@
+- generic [ref=e83]:
+  - banner [ref=e84]:
+    - generic [ref=e90]:
+      - heading "Debug Room" [level=1] [ref=e91]
+      - generic [ref=e92]:
+        - generic [ref=e93]: Code
+        - generic [ref=e95]: 9D3020
+        - button "Copy Room Code" [ref=e96] [cursor=pointer]
+    - generic [ref=e102]:
+      - textbox "Search for a song to add in queue..." [ref=e103]
+      - button "Search" [ref=e104] [cursor=pointer]
+    - generic [ref=e105]:
+      - button "1" [ref=e107] [cursor=pointer]
+      - button "debugtester1" [ref=e112] [cursor=pointer]
+  - main [ref=e120]:
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - iframe [ref=e125]
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - heading "Waiting for next song..." [level=3] [ref=e128]
+            - paragraph [ref=e129]: Now Playing
+          - generic [ref=e130]:
+            - button [ref=e131] [cursor=pointer]
+            - button [ref=e134] [cursor=pointer]
+            - button [ref=e137] [cursor=pointer]
+      - generic [ref=e142]:
+        - heading "Queue (0)" [level=3] [ref=e144]:
+          - text: Queue
+          - generic [ref=e147]: (0)
+        - paragraph [ref=e152]: Queue is emptySearch and add a song!
+    - generic [ref=e154]:
+      - heading "Room Chat" [level=3] [ref=e156]
+      - generic [ref=e162]:
+        - textbox "Type a message..." [ref=e163]
+        - button "Send" [ref=e164] [cursor=pointer]

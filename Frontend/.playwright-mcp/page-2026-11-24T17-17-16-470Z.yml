@@ -1,0 +1,37 @@
+- generic [ref=e83]:
+  - banner [ref=e84]:
+    - generic [ref=e90]:
+      - heading "Debug Room" [level=1] [ref=e91]
+      - generic [ref=e92]:
+        - generic [ref=e93]: Code
+        - generic [ref=e95]: 9D3020
+        - button "Copy Room Code" [ref=e96] [cursor=pointer]
+    - generic [ref=e102]:
+      - textbox "Search for a song to add in queue..." [ref=e103]
+      - button "Search" [ref=e104] [cursor=pointer]
+    - generic [ref=e105]:
+      - button "2" [ref=e107] [cursor=pointer]
+      - button "debugtester2" [ref=e112] [cursor=pointer]
+  - main [ref=e120]:
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - iframe [ref=e125]
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - heading "Waiting for next song..." [level=3] [ref=e128]
+            - paragraph [ref=e129]: Now Playing
+          - generic [ref=e130]: Host controls playback
+      - generic [ref=e136]:
+        - heading "Queue (1)" [level=3] [ref=e138]:
+          - text: Queue
+          - generic [ref=e141]: (1)
+        - list [ref=e143]:
+          - listitem [ref=e144]:
+            - generic [ref=e148]:
+              - paragraph [ref=e149]: The Weeknd - Blinding Lights (Live On The 2020 MTV VMAs)
+              - paragraph [ref=e150]: added by debugtester1
+    - generic [ref=e152]:
+      - heading "Room Chat" [level=3] [ref=e154]
+      - generic [ref=e160]:
+        - textbox "Type a message..." [ref=e161]
+        - button "Send" [ref=e162] [cursor=pointer]

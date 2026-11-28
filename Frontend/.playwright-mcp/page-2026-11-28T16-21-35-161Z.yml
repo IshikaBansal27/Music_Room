@@ -1,0 +1,45 @@
+- generic [ref=e80]:
+  - banner [ref=e81]:
+    - generic [ref=e87]:
+      - heading "Sync Test Room" [level=1] [ref=e88]
+      - generic [ref=e89]:
+        - generic [ref=e90]: Code
+        - generic [ref=e92]: 14FBA9
+        - button "Copy Room Code" [ref=e93] [cursor=pointer]
+    - generic [ref=e99]:
+      - textbox "Search for a song to add in queue..." [ref=e100]
+      - button "Search" [ref=e101] [cursor=pointer]
+    - generic [ref=e102]:
+      - button "2" [ref=e104] [cursor=pointer]
+      - generic [ref=e108]:
+        - button "debugtester2" [active] [ref=e109] [cursor=pointer]
+        - generic [ref=e164]:
+          - button "Light Mode" [ref=e165] [cursor=pointer]
+          - button "Leave Room" [ref=e169] [cursor=pointer]
+  - main [ref=e117]:
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - iframe [ref=e122]:
+          - generic [ref=f1e1]:
+            - generic "YouTube Video Player" [ref=f1e3]
+            - button "Show player controls" [ref=f1e7] [cursor=pointer]
+        - generic [ref=e123]:
+          - generic [ref=e124]:
+            - heading "Big Buck Bunny [HD] - FULL MOVIE Short film (2008)" [level=3] [ref=e125]
+            - paragraph [ref=e126]: Now Playing
+          - generic [ref=e127]: Host controls playback
+      - generic [ref=e133]:
+        - heading "Queue (0)" [level=3] [ref=e135]:
+          - text: Queue
+          - generic [ref=e138]: (0)
+        - paragraph [ref=e143]: Queue is emptySearch and add a song!
+    - generic [ref=e145]:
+      - heading "Room Chat" [level=3] [ref=e147]
+      - generic [ref=e151]:
+        - generic [ref=e153]:
+          - paragraph [ref=e156]: No messages yet
+          - paragraph [ref=e157]: Say hi to the room!
+        - generic [ref=e158]:
+          - button "🙂" [ref=e159] [cursor=pointer]
+          - textbox "Type a message..." [ref=e160]
+          - button "Send" [disabled] [ref=e161]
