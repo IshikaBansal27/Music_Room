@@ -9,6 +9,10 @@
 **/dist/
 **/build/
 
+# Testing / tooling output
+**/.playwright-mcp/
+**/test-socket.js
+
 # Logs
 *.log
 
