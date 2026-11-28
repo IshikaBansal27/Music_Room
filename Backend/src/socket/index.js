@@ -8,7 +8,7 @@ const PRESENCE_RECONNECT_GRACE_MS = 10_000;
 const initSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: process.env.CLIENT_URL || "http://localhost:3000",
       methods: ["GET", "POST"],
       credentials: true,
     },

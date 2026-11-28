@@ -5,6 +5,7 @@ const http = require('http');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const roomRoutes = require('./routes/room');
+const youtubeRoutes = require('./routes/youtube');
 const initSocket = require('./socket');
 
 process.on('uncaughtException', (err) => {
@@ -26,8 +27,9 @@ app.use(express.json());
 
 app.use('/api/auth' , authRoutes);
 app.use('/api/rooms' , roomRoutes);
+app.use('/api/youtube' , youtubeRoutes);
 
 app.get('/', (req, res) => res.send('Music Room API running'));
 
 const PORT = process.env.PORT || 5000;
-server.listen(5000, () => console.log(`Server running on port ${PORT}`));  
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
